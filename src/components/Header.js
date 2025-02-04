@@ -1,3 +1,4 @@
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 import { FaSearch } from "react-icons/fa";
 
@@ -32,11 +33,16 @@ export default function Header() {
               About
             </li>
           </Link>
-          <Link href="/sign-in">
-            <li className="hidden md:inline text-slate-700 hover:underline">
-              Sign In
-            </li>
-          </Link>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+          <SignedOut>
+            <Link href="/sign-in">
+              <li className="hidden md:inline text-slate-700 hover:underline">
+                Sign In
+              </li>
+            </Link>
+          </SignedOut>
         </ul>
       </div>
     </header>
